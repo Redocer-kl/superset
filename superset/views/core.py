@@ -917,23 +917,15 @@ class Superset(BaseSupersetView):
     @event_logger.log_this
     @expose("/welcome/")
     def welcome(self) -> FlaskResponse:
-        """Personalized welcome page"""
+        """Personalized welcome page rewritten to serve dashboard directly"""
+        # 1. Проверяем, авторизован ли пользователь. Если нет — отправляем на логин.
         if not g.user or not get_user_id():
             return redirect_to_login()
 
-        if welcome_dashboard_id := (
-            db.session.query(UserAttribute.welcome_dashboard_id)
-            .filter_by(user_id=get_user_id())
-            .scalar()
-        ):
-            return self.dashboard(dashboard_id_or_slug=str(welcome_dashboard_id))
-
-        payload = {
-            "user": bootstrap_user_data(g.user, include_perms=True),
-            "common": common_bootstrap_payload(),
-        }
-
-        return self.render_app_template(extra_bootstrap_data=payload)
+        # 2. ТЗ: "пользователь без роли Admin попадает на нужный dashboard"
+        # Вызываем метод отрисовки дашборда напрямую.
+        # Метод self.dashboard сам проверит права (если дашборд Published, обычный юзер его увидит).
+        return self.dashboard(dashboard_id_or_slug="1")
 
     @has_access
     @event_logger.log_this

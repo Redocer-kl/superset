@@ -8,8 +8,8 @@
 
 1. `feature/clickhouse-driver` — Интеграция драйвера `clickhouse-connect`.
 2. `feature/favicon` — Замена стандартного фавикона приложения.
-3. `feature/logo` — Полное обновление пакета логотипов во фронтенде.
-4. `feature/remove-powered-by` — Удаление надписи "Powered by Apache Superset" из UI меню.
+3. `feature/branding` — Полное обновление пакета логотипов во фронтенде.
+4. `feature/uichanges` — Удаление надписи "Powered by Apache Superset" из UI меню.
 5. `feature/custom-homepage` — Настройка дефолтного дашборда как стартовой страницы (без 302 редиректа, доступно для ролей Alpha/Gamma).
 6. `feature/remove-url-prefix` — Глобальное исключение префикса `/superset/` из URL-роутинга бэкенда и фронтенда.
 

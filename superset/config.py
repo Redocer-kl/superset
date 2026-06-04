@@ -361,7 +361,7 @@ APP_ICON = "/static/assets/images/superset-logo-horiz.png"
 # Default value of None will take you to '/superset/welcome'
 # You can also specify a relative URL e.g. '/superset/welcome' or '/dashboards/list'
 # or you can specify a full URL e.g. 'https://foo.bar'
-LOGO_TARGET_PATH = '/superset/welcome/'
+LOGO_TARGET_PATH = '/welcome/'
 
 # Specify tooltip that should appear when hovering over the App Icon/Logo
 LOGO_TOOLTIP = ""
@@ -2586,3 +2586,10 @@ for env_var in ENV_VAR_KEYS:
     if env_var in os.environ:
         config_var = env_var.replace("SUPERSET__", "")
         globals()[config_var] = os.environ[env_var]
+
+
+# Базовый корень приложения для Flask
+APPLICATION_ROOT = "/"
+
+# Исправляем таргет логотипа, который мы настраивали в прошлый раз
+LOGO_TARGET_PATH = "/welcome/"
